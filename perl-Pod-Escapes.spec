@@ -1,7 +1,7 @@
 %define	module	Pod-Escapes
 %define	name	perl-%{module}
 %define version 1.04
-%define release %mkrel 5
+%define release %mkrel 6
 
 Name:		%{name}
 Version:	%{version}
