@@ -1,27 +1,27 @@
-%define	module	Pod-Escapes
-%define	name	perl-%{module}
-%define version 1.04
-%define release %mkrel 8
+%define	upstream_name	 Pod-Escapes
+%define upstream_version 1.04
 
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
 Summary:	Perl module to resolve Pod E<...> sequences
-License:	GPL or Artistic
+License:	GPL+ or Artistic
 Group:		Development/Perl
-Source0:	http://search.cpan.org/CPAN/authors/id/S/SB/SBURKE/%{module}-%{version}.tar.gz
-Url:            http://search.cpan.org/dist/%{module}/
+Url:        http://search.cpan.org/dist/%{upstream_name}/
+Source0:	http://search.cpan.org/CPAN/authors/id/S/SB/SBURKE/%{upstream_name}-%{upstream_version}.tar.gz
+
 %if %{mdkversion} < 1010
 BuildRequires:	perl-devel
 %endif
 BuildArch:      noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 Pod::Simple is a module to resolve Pod E<...> sequences.
 
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -42,4 +42,3 @@ rm -rf %{buildroot}
 %doc ChangeLog README
 %{perl_vendorlib}/Pod
 %{_mandir}/man3/*
-
